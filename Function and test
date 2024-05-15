@@ -1,0 +1,37 @@
+#include <vector>
+
+std::vector<int> increaseVector(std::vector<int> vec, int n) {
+    for (int i = 0; i < vec.size(); ++i) {
+        vec[i] += n;
+    }
+    return vec;
+}
+
+
+
+
+
+#include <gtest/gtest.h>
+#include <vector>
+#include "vector_operations.h"
+
+TEST(IncreaseVectorTest, PositiveNumbers) {
+    std::vector<int> input = {1, 2, 3, 4};
+    std::vector<int> expected = {6, 7, 8, 9};
+
+    ASSERT_EQ(increaseVector(input, 5), expected);
+}
+
+TEST(IncreaseVectorTest, NegativeNumbers) {
+    std::vector<int> input = {-1, -2, -3, -4};
+    std::vector<int> expected = {2, 1, 0, -1};
+
+    ASSERT_EQ(increaseVector(input, 3), expected);
+}
+
+TEST(IncreaseVectorTest, EmptyVector) {
+    std::vector<int> input = {};
+    std::vector<int> expected = {};
+
+    ASSERT_EQ(increaseVector(input, 10), expected);
+}
